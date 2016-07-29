@@ -1,3 +1,7 @@
-<p>
-  video-detail works!
-</p>
+<div *ngIf="video">
+  <div class="video-container">
+    <iframe [src]="url" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <h5>{{ video.snippet.title }}</h5>
+  <p>{{ video.snippet.description }}</p>
+</div>

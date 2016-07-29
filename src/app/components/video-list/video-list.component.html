@@ -1,4 +1,7 @@
-<div *ngFor="let video of videos" class="card horizontal cursor-pointer">
+<div 
+  *ngFor="let video of videos" 
+  (click)="selectVideo(video)"
+  class="card horizontal cursor-pointer app-card">
   <div class="card-image">
     <img [src]="video.snippet.thumbnails.high.url" alt="alt">
   </div>
