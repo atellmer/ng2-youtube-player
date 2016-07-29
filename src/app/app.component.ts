@@ -34,7 +34,7 @@ export class AppComponent implements OnInit{
     this.getData(term);
   }
 
-  selectedVideo(video) {
+  selectedVideo(video: any): void {
     this.data.selectedVideo = video;
   }
 
