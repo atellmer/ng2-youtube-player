@@ -1,4 +1,16 @@
 <div class="container-fluid">
-  <div class="cover logo"></div>
-  <app-search-bar></app-search-bar>
+  <div class="row">
+    <div class="col s12">
+      <div class="cover logo"></div>
+      <app-search-bar (search)="searchHandler($event)"></app-search-bar>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col s12 m7">
+      <app-video-detail></app-video-detail>
+    </div>
+    <div class="col s12 m5">
+      <app-video-list [videos]="data.videos"></app-video-list>
+    </div>
+  </div>
 </div>
