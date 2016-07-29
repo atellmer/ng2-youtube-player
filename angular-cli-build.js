@@ -4,10 +4,61 @@
 
 /* global require, module */
 
-var Angular2App = require('angular-cli/lib/broccoli/angular2-app');
+const Angular2App = require('angular-cli/lib/broccoli/angular2-app');
+
+const compile = require('broccoli-postcss');
+const cssImport = require('postcss-import');
+const cssnext = require('postcss-cssnext');
+const cssnano = require('cssnano');
+const nested = require('postcss-nested');
+const vars = require('postcss-simple-vars');
+const mixins = require('postcss-mixins');
+const extend = require('postcss-extend');
+
+const options = {
+  plugins: [
+    {
+      module: cssImport,
+      options: {
+        path: ['src/app/**/*.css'],
+        options: {}
+      }
+    },
+    {
+      module: vars,
+      options: {}
+    },
+    {
+      module: nested,
+      options: {}
+    },
+    {
+      module: mixins,
+      options: {}
+    },
+    {
+      module: extend,
+      options: {}
+    },
+    {
+      module: cssnext,
+      options: {
+        browsers: ['> 1%'],
+        warnForDuplicates: false
+      },
+    },
+    {
+      module: cssnano,
+      options: {
+        safe: true,
+        sourcemap: true
+      }
+    }
+  ]
+};
 
 module.exports = function(defaults) {
-  return new Angular2App(defaults, {
+  let appTree =  new Angular2App(defaults, {
     vendorNpmFiles: [
       'systemjs/dist/system-polyfills.js',
       'systemjs/dist/system.src.js',
@@ -18,4 +69,6 @@ module.exports = function(defaults) {
       '@angular/**/*.+(js|js.map)'
     ]
   });
+
+  return compile(appTree, options);
 };

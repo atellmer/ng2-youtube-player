@@ -1,0 +1,13 @@
+{
+  "name": "ng2",
+  "authors": [
+    "AlexPlex <atellmer@gmail.com>"
+  ],
+  "description": "standard-app",
+  "main": "main.js",
+  "license": "MIT",
+  "homepage": "",
+  "dependencies": {
+    "materialize": "^0.97.7"
+  }
+}
