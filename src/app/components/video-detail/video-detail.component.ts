@@ -17,7 +17,7 @@ export class VideoDetailComponent implements OnInit {
   ngOnInit() {}
 
   ngOnChanges() {
-    if (this.video.hasOwnProperty('id')) {
+    if (this.video && this.video.hasOwnProperty('id')) {
       this.url = this.sanitationService.bypassSecurityTrustResourceUrl(`https://www.youtube.com/embed/${this.video.id.videoId}`);
     }
   }
