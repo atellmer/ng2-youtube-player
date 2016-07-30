@@ -1,5 +1,11 @@
-import { Component, OnInit, OnChanges, Input } from '@angular/core';
-import { DomSanitizationService, SafeResourceUrl } from '@angular/platform-browser';
+import {
+  Component,
+  OnInit,
+  OnChanges,
+  Input } from '@angular/core';
+import {
+  DomSanitizationService,
+  SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   moduleId: module.id,
@@ -12,14 +18,13 @@ export class VideoDetailComponent implements OnInit {
 
   url: SafeResourceUrl;
 
-  constructor(private sanitationService: DomSanitizationService) {}
+  constructor(private sanitationService: DomSanitizationService) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   ngOnChanges() {
     if (this.video && this.video.hasOwnProperty('id')) {
       this.url = this.sanitationService.bypassSecurityTrustResourceUrl(`https://www.youtube.com/embed/${this.video.id.videoId}`);
     }
   }
-
 }

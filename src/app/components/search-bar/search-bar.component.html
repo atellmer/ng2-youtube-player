@@ -1,4 +1,4 @@
 <div class="input-field">
-  <input id="search" type="text" class="validate" (keyup)="changeHandler(search)" #search>
+  <input id="search" type="text" class="validate" [ngFormControl]="term">
   <label for="search">Search</label>
 </div>

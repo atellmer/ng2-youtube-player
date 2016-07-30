@@ -1,6 +1,11 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ViewEncapsulation } from '@angular/core';
 
 import { SearchService } from './shared/services/search/search.service';
+
+import { Data } from './shared/data.model';
 
 import { SearchBarComponent } from './components/search-bar';
 import { VideoDetailComponent } from './components/video-detail';
@@ -15,15 +20,11 @@ import { VideoListComponent } from './components/video-list';
   providers: [SearchService],
   encapsulation: ViewEncapsulation.None,
 })
-export class AppComponent implements OnInit{
-
-  data: any;
+export class AppComponent implements OnInit {
+  data: Data;
 
   constructor(private searchService: SearchService) {
-    this.data = {
-      videos: [],
-      selectedVideo: '',
-    };
+    this.data = new Data();
   }
 
   ngOnInit() {
@@ -41,8 +42,8 @@ export class AppComponent implements OnInit{
   getData(term: string): void {
     this.searchService.getData(term)
       .subscribe(res => {
-          this.data.videos = res;
-          this.data.selectedVideo = this.data.videos[0];
+        this.data.videos = res;
+        this.data.selectedVideo = this.data.videos[0];
       });
   }
 }
