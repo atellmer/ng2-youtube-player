@@ -3,11 +3,7 @@ import {
   OnInit,
   Output,
   EventEmitter } from '@angular/core';
-import {
-  FORM_DIRECTIVES,
-  REACTIVE_FORM_DIRECTIVES,
-  FormGroup,
-  FormControl } from '@angular/forms';
+import { FormControl } from '@angular/forms';
 import 'rxjs/add/operator/debounceTime';
 
 @Component({
@@ -15,12 +11,11 @@ import 'rxjs/add/operator/debounceTime';
   selector: 'app-search-bar',
   templateUrl: 'search-bar.component.html',
   styleUrls: ['search-bar.component.css'],
-  directives: [FORM_DIRECTIVES, REACTIVE_FORM_DIRECTIVES],
 })
 export class SearchBarComponent implements OnInit {
   @Output() search: EventEmitter<any> = new EventEmitter();
 
-  term = new FormControl();
+  term: FormControl = new FormControl('');
 
   constructor() {
     this.term.valueChanges

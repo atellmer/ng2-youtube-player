@@ -11,7 +11,6 @@ import { API_KEY } from '../../constants';
 
 @Injectable()
 export class SearchService {
-
   constructor(private http: Http) { }
 
   getData(term: string): Observable<Array<any>> {

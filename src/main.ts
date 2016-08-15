@@ -1,16 +1,12 @@
-import { bootstrap } from '@angular/platform-browser-dynamic';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { enableProdMode } from '@angular/core';
-import { HTTP_PROVIDERS } from '@angular/http';
-import { provideForms } from '@angular/forms';
 
-import { AppComponent, environment } from './app/';
+import { AppModule, environment  } from './app/';
 
 if (environment.production) {
-  enableProdMode();
+	enableProdMode();
 }
 
-bootstrap(AppComponent, [
-  HTTP_PROVIDERS,
-  provideForms()
-  ]).catch((error: any) => console.error('bootstrap: ', error));
+platformBrowserDynamic().bootstrapModule(AppModule)
+	.catch((error: any) => console.error('bootstrap: ', error));
 
