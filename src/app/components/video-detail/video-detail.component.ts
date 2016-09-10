@@ -4,7 +4,7 @@ import {
   OnChanges,
   Input } from '@angular/core';
 import {
-  DomSanitizationService,
+  DomSanitizer,
   SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
@@ -18,7 +18,7 @@ export class VideoDetailComponent implements OnInit {
 
   url: SafeResourceUrl;
 
-  constructor(private sanitationService: DomSanitizationService) { }
+  constructor(private sanitationService: DomSanitizer) { }
 
   ngOnInit() { }
 
