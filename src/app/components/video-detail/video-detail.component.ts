@@ -18,13 +18,13 @@ export class VideoDetailComponent implements OnInit {
 
   url: SafeResourceUrl;
 
-  constructor(private sanitationService: DomSanitizer) { }
+  constructor(private domSanitizer: DomSanitizer) { }
 
   ngOnInit() { }
 
   ngOnChanges() {
     if (this.video && this.video.hasOwnProperty('id')) {
-      this.url = this.sanitationService.bypassSecurityTrustResourceUrl(`https://www.youtube.com/embed/${this.video.id.videoId}`);
+      this.url = this.domSanitizer.bypassSecurityTrustResourceUrl(`https://www.youtube.com/embed/${this.video.id.videoId}`);
     }
   }
 }
